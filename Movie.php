@@ -7,15 +7,13 @@ class Movie
   private $rating;
   private $poster;
   private $votes;
-  private $id;
 
-  public function __construct($title, $year, $poster, $votes, $id)
+  public function __construct($title, $year, $poster, $votes)
   {
     $this->title = $title;
     $this->year = $year;
     $this->poster = $poster;
     $this->votes = $votes;
-    $this->id = $id;
   }
 
   public function getTitle()
@@ -34,6 +32,17 @@ class Movie
   {
     $this->calcRating();
     return $this->rating;
+  }
+  public function getCard()
+  {
+    $this->calcRating();
+    $card = "<div class='card'>";
+    $card .= "<img src='$this->poster' alt='$this->title' class='poster'>";
+    $card .= "<h2>$this->title</h2>";
+    $card .= "<h3>$this->year</h3>";
+    $card .= "<h3>$this->rating</h3>";
+    $card .= "</div>";
+    return $card;
   }
 
   private function calcRating()
