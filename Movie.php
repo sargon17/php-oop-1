@@ -18,7 +18,25 @@ class Movie
     $this->id = $id;
   }
 
-  public function calcRating()
+  public function getTitle()
+  {
+    return $this->title;
+  }
+  public function getYear()
+  {
+    return $this->year;
+  }
+  public function getPoster()
+  {
+    return $this->poster;
+  }
+  public function getRating()
+  {
+    $this->calcRating();
+    return $this->rating;
+  }
+
+  private function calcRating()
   {
     $this->rating = array_sum($this->votes) / count($this->votes);
   }
